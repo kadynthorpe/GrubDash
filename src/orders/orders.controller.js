@@ -28,8 +28,9 @@ function create(req, res, next) {
 
 function update(req, res, next) {
   const oldOrderData = res.locals.order;
-  const newOrderData = req.body.data
-  res.status(200).json( {data: {...oldOrderData, ...newOrderData} });
+  const newOrderData = req.body.data;
+  const updatedOrderData = { ...oldOrderData, ...newOrderData, id: oldOrderData.id }; // Ensure id property remains unchanged
+  res.status(200).json({ data: updatedOrderData });
 }
 
 function destroy(req, res, next) {
