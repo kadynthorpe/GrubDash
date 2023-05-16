@@ -28,8 +28,9 @@ function read(req, res, next) {
 
 function update(req, res, next) {
   const oldDishData = res.locals.dish;
-  const newDishData = req.body.data
-  res.status(200).json( { data: {...oldDishData, ...newDishData} } );
+  const newDishData = req.body.data;
+  const updatedDishData = { ...oldDishData, ...newDishData, id: oldDishData.id }; // Ensure id property remains unchanged
+  res.status(200).json({ data: updatedDishData });
 }
 
 
